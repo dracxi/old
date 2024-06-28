@@ -1,0 +1,64 @@
+import discord
+from discord.ext import commands, tasks
+import datetime
+import pytz
+
+all_events = {
+  "Bonfire Party": {
+    "time": "22:00",
+    "url": "https://i.ytimg.com/vi/FkArq_u3jG8/maxresdefault.jpg",
+    "Message": ""
+  },
+  "test": {
+    "time": "20:27"
+  }
+}
+
+UTC = pytz.utc
+
+
+class Undawn(commands.Cog):
+
+  def __init__(self, bot):
+    self.bot = bot
+
+  @commands.slash_command(name="setevent")
+  async def event_command(self, ctx, name, time, message=None, image_url=None):
+    await ctx.respond("v")
+
+  @tasks.loop(seconds=60)
+  async def send_event(self):
+    channel = self.bot.get_channel(1162103853643202570)
+    time_india = pytz.timezone('Asia/Kolkata')
+    utc_time = datetime.datetime.now(time_india)
+    time = utc_time.strftime("%H:%M").split(":")
+    print(time)
+    timeInMin = int(time[0]) * 60 + int(time[1])
+    for ename in all_events.keys():
+      eTime = all_events[ename]['time'].split(':')
+      eTimeInMin = int(eTime[0]) * 60 + int(eTime[1])
+      print(timeInMin, eTimeInMin)
+
+      if int(timeInMin) == int(eTimeInMin) - 7:
+        embed = discord.Embed(title="Event Announcement!",
+                              description=f"**{ename}** will start in `7m`")
+        embed.set_image(url=all_events[ename]['url'])
+        embed.timestamp = datetime.datetime.utcnow()
+        await channel.send("@everyone", embed=embed)
+      if int(timeInMin) == int(eTimeInMin):
+        embed = discord.Embed(title="Event Announcement!",
+                              description=f"**{ename}** has started")
+        embed.timestamp = datetime.datetime.utcnow()
+        await channel.send(embed=embed)
+
+  @send_event.before_loop
+  async def before_event(self):
+    print("Waiting for bot to be ready...")
+    await self.bot.wait_until_ready()
+    print("Bot is ready, starting the task.")
+
+
+def setup(bot):
+  cog = Undawn(bot)
+  cog.send_event.start()
+  bot.add_cog(cog)

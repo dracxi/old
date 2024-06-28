@@ -1,0 +1,317 @@
+html {
+    height: 100%;
+    background-color: #000000;
+    background-image: url(/static/images/bg.png);
+    background-size: auto 66%;
+    background-position: top;
+    background-repeat: no-repeat;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Helvetica, Roboto;
+}
+#openButtonContainer {
+    position: fixed;
+    top: 20px;
+    left: 45px;
+    z-index: 1; /* Ensure it's above other elements */
+}
+
+#openButton {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+span>img {
+    width: 60px;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main>.logo {
+    position: absolute;
+    top: 30vh;
+    width: 20vh;
+    height: 20vh;
+}
+
+main>.logo>img {
+    width: inherit;
+    height: inherit;
+}
+
+main>.app-name {
+    position: absolute;
+    top: 54vh;
+    height: 10vh;
+}
+
+main>.app-name>img {
+    height: inherit;
+}
+
+main>.slogan {
+    position: absolute;
+    top: 67vh;
+    height: 3vh;
+    color: #fafafa;
+}
+
+main>.download {
+    position: absolute;
+    top: 75vh;
+    height: 6vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main>.download>a {
+    margin: 0 3vw;
+}
+
+main>.download>a>img {
+    height: 6vh;
+    user-select: none;
+}
+
+.fragment {
+    position: absolute;
+    top: 5vh;
+    right: 8vw;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.fragment>img {
+    height: 25vh;
+}
+
+footer {
+    position: absolute;
+    bottom: 3vh;
+    padding-bottom: 1vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer>p {
+    text-align: center;
+    font-size: 1.5vh;
+    font-weight: 500;
+    color: #dadada;
+    text-decoration: none;
+    user-select: none;
+}
+
+footer>div {
+    width: 50vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer>div>a {
+    margin: 0 1vw;
+    font-size: 1.7vh;
+    font-weight: 500;
+    color: #fafafa;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+footer a:hover {
+    color: #7D4DF9;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 750px) {
+    html {
+        background-size: auto 50vh;
+    }
+
+    main {
+        width: 89vw;
+    }
+
+    main>.logo {
+        top: 40vh;
+        width: 10vh;
+        height: 10vh;
+    }
+
+    main>.logo>img {
+        width: inherit;
+        height: inherit;
+    }
+
+    main>.app-name {
+        position: absolute;
+        top: 52vh;
+        height: 5vh;
+    }
+
+    main>.app-name>img {
+        height: inherit;
+    }
+
+    main>.slogan {
+        position: absolute;
+        top: 56vh;
+        height: 3vh;
+        color: #fafafa;
+    }
+
+    main>.download {
+        position: absolute;
+        top: 65vh;
+        height: 5vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    main>.download>a {
+        margin: 0 3vw;
+    }
+
+    main>.download>a>img {
+        height: 5vh;
+        user-select: none;
+    }
+
+    main a {
+        width: 20vh;
+        margin-bottom: 2vh;
+        text-align: center;
+    }
+
+    main a>img {
+        height: 5vh;
+    }
+
+    .fragment {
+        top: 5vh;
+        right: 8vw;
+        height: 28vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .fragment>img {
+        height: 13vh;
+    }
+
+    footer {
+        flex-direction: column;
+        padding-bottom: 0;
+        align-items: center;
+    }
+
+    footer>div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer>div>a {
+        line-height: 2.2vh;
+        font-size: 1.5vh;
+    }
+    #openButtonContainer {
+        position: fixed;
+        top: 25px;
+        left: 15px;
+        z-index: 1; /* Ensure it's above other elements */
+    }
+    span>img {
+        width: 45px;
+    }
+    
+}
